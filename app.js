@@ -5,7 +5,7 @@ myApp.config(function ($routeProvider) {
   $routeProvider
 
   .when('/', {
-    templateUrl: 'pages/home.htm',
+    templateUrl: 'pages/home/home.htm',
     controller: 'homeController'
   })
 
@@ -15,11 +15,25 @@ myApp.config(function ($routeProvider) {
   })
 });
 
+myApp.controller('navController', ['$scope', ($scope) => {
+  $scope.linkList = [
+    {
+      text: 'Home',
+      path: '#'
+    },
+    {
+      text: 'Search',
+      path: '#/search'
+    }
+  ]
+}]);
+
 myApp.controller('homeController', ['$scope', ($scope) => {
   $scope.title = 'Home Page Title'
+  $scope.searchInput = ''
 }]);
 
 myApp.controller('searchController', ['$scope', ($scope) => {
   $scope.title = 'Search Page';
-  $scope.results = ['a', 'b' , 'c'];
+  $scope.results = ['a', 'b', 'c'];
 }]);
