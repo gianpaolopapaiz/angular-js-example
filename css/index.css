@@ -1,0 +1,32 @@
+body {
+  margin: 0px; }
+  body .app-body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; }
+    body .app-body .nav-bar {
+      height: 100%;
+      width: 150px;
+      padding: 10px;
+      background-color: #23283E;
+      display: flex;
+      flex-direction: column; }
+      body .app-body .nav-bar h4 {
+        align-self: center;
+        color: #8CC83C; }
+      body .app-body .nav-bar .link-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px; }
+        body .app-body .nav-bar .link-list .link-item a {
+          color: white;
+          text-decoration: none; }
+    body .app-body .angular-body {
+      height: 100%;
+      width: 100%;
+      background-color: lightgrey;
+      padding: 10px 20px; }
+      body .app-body .angular-body .home-page p {
+        color: red;
+        font-weight: bold; }
