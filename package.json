@@ -1,0 +1,22 @@
+{
+  "name": "angular_js_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gianpaolopapaiz/angular-js-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gianpaolopapaiz/angular-js-example/issues"
+  },
+  "homepage": "https://github.com/gianpaolopapaiz/angular-js-example#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
