@@ -30,3 +30,6 @@ body {
       body .app-body .angular-body .home-page p {
         color: red;
         font-weight: bold; }
+      body .app-body .angular-body .recipe-search {
+        display: flex;
+        column-gap: 5px; }
