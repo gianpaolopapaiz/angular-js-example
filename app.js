@@ -1,5 +1,4 @@
-// const myApp = angular.module('myApp', ['ng-route']);
-const myApp = angular.module('myApp', ['ngRoute']);
+const myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
 
 myApp.config(function ($routeProvider) {
   $routeProvider
@@ -10,7 +9,7 @@ myApp.config(function ($routeProvider) {
   })
 
   .when('/search', {
-    templateUrl: 'pages/search.htm',
+    templateUrl: 'pages/search/search.htm',
     controller: 'searchController'
   })
 });
@@ -35,5 +34,26 @@ myApp.controller('homeController', ['$scope', ($scope) => {
 
 myApp.controller('searchController', ['$scope', ($scope) => {
   $scope.title = 'Search Page';
-  $scope.results = ['a', 'b', 'c'];
+  $scope.recipes = [
+    {
+      name: 'chocolate',
+      time: 'fast'
+    },
+    {
+      name: 'tomato',
+      time: 'slow'
+    }
+  ];
+
+  $scope.searchInput = '';
+  $scope.recipeSearch = '';
+  
+  $scope.handleClick = () => {
+    $scope.recipeSearch = $scope.recipes.filter((recipe) => recipe.name === $scope.searchInput);
+  }
+
+  $scope.clearSearch = () => {
+    $scope.searchInput = '';
+    $scope.recipeSearch = [];
+  }
 }]);
