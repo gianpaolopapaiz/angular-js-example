@@ -1,0 +1,17 @@
+<div ng-controlle='searchController'>
+  <p> {{ title}} </p>
+  <form>
+    <input ng-model='searchInput'></input>
+    <input type='submit' ng-click='handleClick()' value='Search'></input>
+  </form>
+  <div ng-hide="searchInput === ''">
+    <p>Searching for text: "{{searchInput}}" <a href="" ng-click='clearSearch()'>X</a></p>
+  </div>
+  <div ng-hide="recipeSearch === ''">
+    <h4>Results</h4>
+    <div ng-repeat='recipe in recipeSearch' class='recipe-search'>
+      <p>Name: {{recipe.name}} |</p>
+      <p>Time: {{recipe.time}}</p>
+    </div>
+  </div>
+</div>
