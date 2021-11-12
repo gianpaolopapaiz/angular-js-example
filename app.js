@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
 
 myApp.config(function ($routeProvider) {
@@ -32,28 +34,30 @@ myApp.controller('homeController', ['$scope', ($scope) => {
   $scope.searchInput = ''
 }]);
 
-myApp.controller('searchController', ['$scope', ($scope) => {
+myApp.controller('searchController', ['$scope', '$resource', ($scope, $resource) => {
   $scope.title = 'Search Page';
-  $scope.recipes = [
-    {
-      name: 'chocolate',
-      time: 'fast'
-    },
-    {
-      name: 'tomato',
-      time: 'slow'
-    }
-  ];
-
   $scope.searchInput = '';
-  $scope.recipeSearch = '';
+  $scope.recipes = '';
   
   $scope.handleClick = () => {
-    $scope.recipeSearch = $scope.recipes.filter((recipe) => recipe.name === $scope.searchInput);
+    const url = 'https://tasty.p.rapidapi.com/recipes/list';
+    const headers = {
+      'x-rapidapi-host': 'tasty.p.rapidapi.com',
+      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      useQueryString: true
+    };
+    let actions = {
+      getList: {method: 'GET', params: {q: $scope.searchInput}, headers: headers}
+    };
+    const getRecipes = $resource(url, [], actions);
+    getRecipes.getList().$promise.then((response) => {
+      $scope.recipes = response.results.filter((result) => result.beauty_url);
+      console.log($scope.recipes);
+    });
   }
 
   $scope.clearSearch = () => {
     $scope.searchInput = '';
-    $scope.recipeSearch = [];
+    $scope.recipes = '';
   }
 }]);
