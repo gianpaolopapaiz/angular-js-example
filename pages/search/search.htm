@@ -9,9 +9,13 @@
   </div>
   <div ng-hide="recipes === ''">
     <h4>Results</h4>
-    <div ng-repeat='recipe in recipes' class='recipe-search'>
-      <img ng-src='{{recipe.beauty_url}}' width='80px' alt="">
-      <p>{{recipe.name}}</p>
+    <div class='recipe-result'>
+      <div ng-repeat='recipe in recipes'>
+        <info-card 
+          title='{{recipe.name}}'
+          image-url='{{recipe.beauty_url}}'
+        />
+      </div>
     </div>
   </div>
 </div>

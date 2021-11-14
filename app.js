@@ -1,7 +1,8 @@
-require('dotenv').config()
+// require('dotenv').config()
 
 const myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
 
+// Routes
 myApp.config(function ($routeProvider) {
   $routeProvider
 
@@ -15,6 +16,8 @@ myApp.config(function ($routeProvider) {
     controller: 'searchController'
   })
 });
+
+// Controllers
 
 myApp.controller('navController', ['$scope', ($scope) => {
   $scope.linkList = [
@@ -43,7 +46,7 @@ myApp.controller('searchController', ['$scope', '$resource', ($scope, $resource)
     const url = 'https://tasty.p.rapidapi.com/recipes/list';
     const headers = {
       'x-rapidapi-host': 'tasty.p.rapidapi.com',
-      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      'x-rapidapi-key': '',
       useQueryString: true
     };
     let actions = {
@@ -61,3 +64,19 @@ myApp.controller('searchController', ['$scope', '$resource', ($scope, $resource)
     $scope.recipes = '';
   }
 }]);
+
+// Directives
+
+myApp.directive("infoCard", () => {
+
+  return {
+    restrict: 'AE',
+    templateUrl: 'directives/infoCard/infoCard.htm',
+    replace: true,
+    scope: {
+      imageUrl: "@", 
+      title: "@",
+      link: "@"
+    }
+  }
+})
